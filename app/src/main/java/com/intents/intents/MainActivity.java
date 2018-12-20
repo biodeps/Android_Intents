@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         String phoneNumber = editText_Phone.getText().toString();
 
         if (isMyNumberValid(phoneNumber)) {
-            Intent intentPhone = new Intent(Intent.ACTION_DIAL, Uri.parse(phoneNumber));
+            Intent intentPhone = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null));
             //ACTION_DIAL posa el número i permet a l'usuari decidir si fa la trucada o no, però
             //ACTION_CALL faria la trucada directament i per això REQUERIRIA PERMISSOS
             startActivity(intentPhone);
