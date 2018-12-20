@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Intents APP</string>
+    <string name="buttonText_takeapic">Take a pic!</string>
+    <string name="buttonText_browse">Select a file</string>
+    <string name="buttonText_justShow">Pick-air-pic!</string>
+    <string name="toastText_error">An error has occurred. Please, try again.</string>
+    <string name="toastText_url">Invalid URL. Please, try again</string>
+    <string name="toastText_phone">Invalid phone number. Please, try again</string>
+    <string name="selectText_Pic">Please, select an image to display</string>
+    <string name="insertText_Url">Insert URL here</string>
+    <string name="selectText_Website">Please, select a Web browser</string>
+    <string name="imageView_ContentDescription">Here you will see the current image</string>
+    <string name="wwwButton_Description">Go to submitted website</string>
+    <string name="phoneButton_Description">Call to submitted number</string>
+    <string name="insertText_Phone">Insert phone number to call here</string>
+
+</resources>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imatgeResultat"
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="@string/imageView_ContentDescription"
+        app:layout_constraintBottom_toTopOf="@+id/btn_takePic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/provapaint" />
+
+    <Button
+        android:id="@+id/btn_takePic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:onClick="takePic"
+        android:text="@string/buttonText_takeapic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imatgeResultat" />
+
+    <Button
+        android:id="@+id/btn_selectFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:onClick="browseImage"
+        android:text="@string/buttonText_browse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imatgeResultat" />
+
+    <Button
+        android:id="@+id/btn_pickAirPic"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:onClick="pickAirPic"
+        android:text="@string/buttonText_justShow"
+        app:layout_constraintEnd_toStartOf="@+id/btn_selectFile"
+        app:layout_constraintStart_toEndOf="@+id/btn_takePic"
+        app:layout_constraintTop_toBottomOf="@+id/imatgeResultat" />
+
+    <!--https://stackoverflow.com/questions/16017165/auto-fit-textview-for-android-->
+    <!-- els comentaris han d'anar dins el layout però fora dels elements-->
+
+
+    <!-- https://stackoverflow.com/questions/15116393/fit-image-in-imagebutton-in-android -->
+    <ImageButton
+        android:id="@+id/wwwButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="false"
+        android:contentDescription="@string/wwwButton_Description"
+        android:onClick="goToWeb"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499"
+        app:srcCompat="@drawable/www_button_png" />
+
+    <EditText
+        android:id="@+id/txt_Url"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="@string/insertText_Url"
+        android:background="@color/colorTextViewBackground"
+        android:hint="@string/insertText_Url"
+        android:inputType="textUri|textWebEditText"
+        android:textAlignment="viewEnd"
+        android:textStyle="italic"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toStartOf="@+id/wwwButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_takePic" />
+
+    <ImageButton
+        android:id="@+id/phoneButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="false"
+        android:contentDescription="@string/phoneButton_Description"
+        android:padding="0dp"
+        android:onClick="callToNumber"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wwwButton"
+        app:srcCompat="@drawable/phone_button_png" />
+
+    <EditText
+        android:id="@+id/txt_Phone"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="44dp"
+        android:background="@color/colorTextViewBackground"
+        android:ems="10"
+        android:hint="@string/insertText_Phone"
+        android:inputType="phone"
+        android:textAlignment="viewEnd"
+        android:textStyle="italic"
+        app:autoSizeTextType="uniform"
+        android:autofillHints="@string/insertText_Phone"
+        app:layout_constraintEnd_toEndOf="@+id/txt_Url"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_Url"
+        app:layout_constraintTop_toBottomOf="@+id/txt_Url" />
+
+</android.support.constraint.ConstraintLayout>
