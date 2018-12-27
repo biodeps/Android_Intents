@@ -129,4 +129,99 @@
         app:layout_constraintStart_toStartOf="@+id/txt_Url"
         app:layout_constraintTop_toBottomOf="@+id/txt_Url" />
 
+    <ImageButton
+        android:id="@+id/alarmButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+
+        android:adjustViewBounds="false"
+        android:backgroundTintMode="screen"
+        android:contentDescription="@string/alarmButton_Description"
+        android:onClick="setAlarm"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneButton"
+        app:srcCompat="@drawable/set_alarm" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="44dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/txt_Phone"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_Phone"
+
+        app:layout_constraintTop_toBottomOf="@+id/txt_Phone">
+
+        <Spinner
+            android:id="@+id/day_spinner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorTextViewBackground"
+            android:entries="@array/days_Array"
+            android:textAlignment="center" />
+
+        <Spinner
+            android:id="@+id/hour_spinner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_weight="1"
+            android:background="@color/colorTextViewBackground"
+            android:entries="@array/hour_Array"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="460dp" />
+
+        <Spinner
+            android:id="@+id/minute_spinner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:background="@color/colorTextViewBackground"
+            android:entries="@array/minute_Array"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="460dp" />
+
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/txt_NewActivity"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="@string/insertText_Activity"
+        android:background="@color/colorTextViewBackground"
+        android:hint="@string/insertText_Activity"
+        android:inputType="textUri|textWebEditText"
+        android:textAlignment="viewEnd"
+        android:textStyle="italic"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toStartOf="@+id/wwwButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/buttonText_Activity"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_NewActivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_NewActivity" />
 </android.support.constraint.ConstraintLayout>

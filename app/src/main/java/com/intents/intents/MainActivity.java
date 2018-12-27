@@ -1,6 +1,8 @@
 package com.intents.intents;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -25,6 +27,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.File;
@@ -42,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
     EditText editText_Url;
     EditText editText_Phone;
+    Spinner daySpinner;
+    Spinner hourSpinner;
+    Spinner minuteSpinner;
 
     final int CAMERA = 100;
     final int BROWSEPIC = 101;
@@ -59,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
         pickairpick = findViewById(R.id.btn_pickAirPic);
         editText_Url = findViewById(R.id.txt_Url);
         editText_Phone = findViewById(R.id.txt_Phone);
+        daySpinner = findViewById(R.id.day_spinner);
+        hourSpinner = findViewById(R.id.hour_spinner);
+        minuteSpinner = findViewById(R.id.minute_spinner);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             takePictureButton.setEnabled(false); //si no tinc el permís, poso el botó a false perquè no permeti fer la foto
@@ -67,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             //Aquesta línia ha guardat els 2 permisos en una llista, però no cal fer-ho amb llistes
         }
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -152,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intentUrl); //No és ForResult, ja que no intento obtenir res: Vull simplement obrir una pàgina amb la web
         } else {
             //Toast al vuelo, sense declarar
-            Toast.makeText(this, getApplicationContext().getString(R.string.toastText_url), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getApplicationContext().getString(R.string.toastText_Url), Toast.LENGTH_LONG).show();
         }
 
     }
@@ -172,12 +182,16 @@ public class MainActivity extends AppCompatActivity {
             //ACTION_CALL faria la trucada directament i per això REQUERIRIA PERMISSOS
             startActivity(intentPhone);
         } else {
-            Toast.makeText(this, getApplicationContext().getString(R.string.toastText_phone), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getApplicationContext().getString(R.string.toastText_Phone), Toast.LENGTH_LONG).show();
         }
     }
 
     private boolean isMyNumberValid(String phone) {
         return Patterns.PHONE.matcher(phone).matches();
+    }
+
+    public void setAlarm(View vista) {
+        Intent intentAlarm = new Intent(Intent.);
     }
 
 }
