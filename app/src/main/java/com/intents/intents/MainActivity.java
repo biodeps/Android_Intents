@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.AlarmClock;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -31,6 +32,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,9 +51,15 @@ public class MainActivity extends AppCompatActivity {
 
     EditText editText_Url;
     EditText editText_Phone;
+
     Spinner daySpinner;
     Spinner hourSpinner;
     Spinner minuteSpinner;
+    Map<String, Integer> hashMapDays = new HashMap<String, Integer>();
+
+    int spinnerHourPosition;
+    int spinnerMinutePosition;
+    int spinnerDayPosition;
 
     final int CAMERA = 100;
     final int BROWSEPIC = 101;
@@ -101,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == CAMERA && resultCode == RESULT_OK && data != null) {
 
             //ERROR: E/Surface: getSlotFromBufferLocked: unknown buffer: 0xb30b9320
+            //AQUÍ DEBE PROGRAMARSE EL SAVE & SHOW DE LA IMAGEN
 
 
         } else if (requestCode == BROWSEPIC && resultCode == RESULT_OK && data != null) {
@@ -191,7 +204,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setAlarm(View vista) {
-        Intent intentAlarm = new Intent(Intent.);
+        spinnerHourPosition = hourSpinner.getSelectedItemPosition();
+        String[] hourArray = getResources().getStringArray(R.array.hour_Array);
+
+        spinnerMinutePosition = minuteSpinner.getSelectedItemPosition();
+        String[] minuteArray = getResources().getStringArray(R.array.minute_Array);
+
+        spinnerDayPosition = daySpinner.getSelectedItemPosition();
+        String[] dayArray = getResources().getStringArray(R.array.days_Array);
+
+        Intent intentAlarm = new Intent(AlarmClock.ACTION_SET_ALARM);
+        intentAlarm.putExtra(AlarmClock.EXTRA_HOUR, Integer.valueOf(hourArray[spinnerHourPosition]));
+        intentAlarm.putExtra(AlarmClock.EXTRA_MINUTES, Integer.valueOf(minuteArray[spinnerMinutePosition]));
+        ArrayList<Integer> dayAlarmArray = new ArrayList<>();
+        getMyMap(hashMapDays);
+
+        dayAlarmArray.add(hashMapDays.get(dayArray[spinnerDayPosition]));
+        intentAlarm.putExtra(AlarmClock.EXTRA_DAYS, dayAlarmArray);
+        intentAlarm.putExtra(AlarmClock.EXTRA_VIBRATE, true);
+        startActivity(intentAlarm);
+    }
+
+    public void getMyMap(Map<String, Integer> hashMapDays) {
+        hashMapDays.put("Sunday", Calendar.SUNDAY);
+        hashMapDays.put("Monday", Calendar.MONDAY);
+        hashMapDays.put("Tuesday", Calendar.TUESDAY);
+        hashMapDays.put("Wednesday", Calendar.WEDNESDAY);
+        hashMapDays.put("Thursday", Calendar.THURSDAY);
+        hashMapDays.put("Friday", Calendar.FRIDAY);
+        hashMapDays.put("Saturday", Calendar.SATURDAY);
     }
 
 }
