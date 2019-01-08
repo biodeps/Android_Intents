@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText editText_Url;
     EditText editText_Phone;
+    EditText editText_NewActivity;
 
     Spinner daySpinner;
     Spinner hourSpinner;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         daySpinner = findViewById(R.id.day_spinner);
         hourSpinner = findViewById(R.id.hour_spinner);
         minuteSpinner = findViewById(R.id.minute_spinner);
+        editText_NewActivity = findViewById(R.id.txt_NewActivity);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             takePictureButton.setEnabled(false); //si no tinc el permís, poso el botó a false perquè no permeti fer la foto
@@ -225,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intentAlarm);
     }
 
-    public void getMyMap(Map<String, Integer> hashMapDays) {
+    public void getMyMap(Map<String, Integer> hashMapDays) { //Map que transforma l'String del dia per l'enter que li pertoca
         hashMapDays.put("Sunday", Calendar.SUNDAY);
         hashMapDays.put("Monday", Calendar.MONDAY);
         hashMapDays.put("Tuesday", Calendar.TUESDAY);
@@ -233,6 +235,17 @@ public class MainActivity extends AppCompatActivity {
         hashMapDays.put("Thursday", Calendar.THURSDAY);
         hashMapDays.put("Friday", Calendar.FRIDAY);
         hashMapDays.put("Saturday", Calendar.SATURDAY);
+    }
+
+    public void openNewView(View vista) {
+        String userText = editText_NewActivity.getText().toString(); //obtinc el text
+        Intent openNewView = new Intent(this, SecondaryActivityClass.class);
+        openNewView.putExtra("textToShow", userText); //afegeix el text com a "extra" dins l'intent
+        startActivity(openNewView);
+    }
+
+    public void exitApp(View vista){
+        finish();
     }
 
 }
