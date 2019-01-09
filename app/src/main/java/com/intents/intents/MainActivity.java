@@ -89,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, CAMERA);
             //Aquesta línia ha guardat els 2 permisos en una llista, però no cal fer-ho amb llistes
         }
+        // IMPEDEIXO LA FUNCIONALITAT DE TAKE A PIC PERQUÈ ESTÀ EN CONSTRUCCIÓ:
+        takePictureButton.setEnabled(false);
+
     }
 
 
